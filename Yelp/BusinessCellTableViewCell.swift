@@ -42,6 +42,7 @@ class BusinessCellTableViewCell: UITableViewCell {
         self.ratingImageView.setImageWithURL(NSURL(string:self.business.ratingImageUrl))
         self.addressLabel.text = self.business.address
         self.distanceLabel.text = String (format: "%.2f mi", self.business.distance)
+        self.categoryLabel.text = self.business.categories
     }
  
     override func layoutSubviews() {

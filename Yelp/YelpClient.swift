@@ -12,6 +12,10 @@ class YelpClient: BDBOAuth1RequestOperationManager {
     var accessToken: String!
     var accessSecret: String!
     
+    enum YelpSortMode {
+        case BestMatched, Distance, HighestRated
+    }
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -30,6 +34,19 @@ class YelpClient: BDBOAuth1RequestOperationManager {
         // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
         //var parameters = ["term": term, "location": "San Francisco"]
         var parameters = ["term": term, "ll": "37.774866,-122.394556"]
+        return self.GET("search", parameters: parameters, success: success, failure: failure)
+    }
+    
+    func searchWithTermAndCategories(term: String, sort: [String]!, categories:[String]!, deals: YelpSortMode!, success: (AFHTTPRequestOperation!, AnyObject!) -> Void, failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> AFHTTPRequestOperation! {
+        // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
+        //var parameters = ["term": term, "location": "San Francisco"]
+        var categoryFilterStr = ""
+        if categories.count>0 {
+            for category : String in categories {
+                categoryFilterStr += category
+            }
+        }
+        var parameters = ["term": term, "category_filter": categoryFilterStr, "ll": "37.774866,-122.394556"]
         return self.GET("search", parameters: parameters, success: success, failure: failure)
     }
     

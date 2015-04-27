@@ -16,9 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        var storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var mainViewController = storyboard.instantiateInitialViewController() as! UIViewController//.instantiateViewControllerWithIdentifier("YelpViewController") as! YelpViewController
-        self.window?.rootViewController = UINavigationController(rootViewController: mainViewController)
+        /*var storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var mainViewController = storyboard.instantiateInitialViewController() as! UIViewController
+        self.window?.rootViewController = UINavigationController(rootViewController: mainViewController)*/
         return true
     }
 

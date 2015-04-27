@@ -122,7 +122,7 @@
                     <navigationItem key="navigationItem" id="Zzm-D2-mxg">
                         <barButtonItem key="leftBarButtonItem" title="Filters" id="9fj-Fv-JnD">
                             <connections>
-                                <segue destination="QkC-gj-BJY" kind="push" id="3qG-Ai-tXz"/>
+                                <segue destination="Aon-yT-XEu" kind="modal" id="qgk-li-m0u"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -269,7 +269,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="3qG-Ai-tXz"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class YelpViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class YelpViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FiltersViewControllerDelegate {
     var client: YelpClient!
     var businesses : NSArray = NSArray()
     
@@ -40,8 +40,8 @@ class YelpViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
         
-        client.searchWithTerm("Thai", success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-            println(response)
+        client.searchWithTerm("Restaurants", success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            //println(response)
             let businessDictionaries : NSArray = response["businesses"] as! NSArray
             let business : Business = Business()
             self.businesses = business.businessesWithDictionaries(businessDictionaries)
@@ -69,6 +69,33 @@ class YelpViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Dispose of any resources that can be recreated.
     }
     
-    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        let navigationController = segue.destinationViewController as! UINavigationController
+        let filtersViewController = navigationController.topViewController as! FiltersViewController
+        
+        filtersViewController.delegate = self
+    }
+   
+    func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String : AnyObject]) {
+        
+        var categoryList = filters["categories"] as? [String]
+
+        client.searchWithTermAndCategories("Restaurants",  sort: nil, categories: categoryList, deals: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            println(response)
+            let businessDictionaries : NSArray = response["businesses"] as! NSArray
+            let business : Business = Business()
+            self.businesses = business.businessesWithDictionaries(businessDictionaries)
+            
+            self.tableView.reloadData()
+            
+            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println(error)
+        }
+    }
 }
+
 
