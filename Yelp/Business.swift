@@ -74,9 +74,6 @@ class Business: NSObject {
         {
             if let dictionary = obj as? NSDictionary
             {
-                if dictionary.count < 20 {
-                    println (dictionary)
-                }
                 let business : Business = Business().initWithDictionary(dictionary)
                 businesses.addObject(business)
             }

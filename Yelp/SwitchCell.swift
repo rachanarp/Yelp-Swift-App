@@ -34,10 +34,11 @@ class SwitchCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        onSwitch.setOn(selected, animated: animated)
     }
     
     func switchValueChanged() {
-        
+    
         delegate?.switchCell?(self, didChangeValue: onSwitch.on)
         
     }

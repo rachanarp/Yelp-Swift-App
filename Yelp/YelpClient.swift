@@ -33,11 +33,11 @@ class YelpClient: BDBOAuth1RequestOperationManager {
     func searchWithTerm(term: String, success: (AFHTTPRequestOperation!, AnyObject!) -> Void, failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> AFHTTPRequestOperation! {
         // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
         //var parameters = ["term": term, "location": "San Francisco"]
-        var parameters = ["term": term, "ll": "37.774866,-122.394556"]
+        var parameters = ["term": "Restaurants", "ll": "37.774866,-122.394556"]
         return self.GET("search", parameters: parameters, success: success, failure: failure)
     }
     
-    func searchWithTermAndCategories(term: String, sort: [String]!, categories:[String]!, deals: YelpSortMode!, success: (AFHTTPRequestOperation!, AnyObject!) -> Void, failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> AFHTTPRequestOperation! {
+    func searchWithTermAndCategories(term: String, sort: String!, categories:[String]!, deals:String! , radius:String!, success: (AFHTTPRequestOperation!, AnyObject!) -> Void, failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> AFHTTPRequestOperation! {
         // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
         //var parameters = ["term": term, "location": "San Francisco"]
         var categoryFilterStr = ""
@@ -46,7 +46,14 @@ class YelpClient: BDBOAuth1RequestOperationManager {
                 categoryFilterStr += category
             }
         }
-        var parameters = ["term": term, "category_filter": categoryFilterStr, "ll": "37.774866,-122.394556"]
+        
+        //radius_filter number meters, deals_filter:Bool, sort number
+        var parameters = ["term": "Thai",
+            "category_filter": categoryFilterStr,
+            "radius_filter": radius,
+            "sort": sort,
+            "deal_filter": deals,
+            "ll": "37.774866,-122.394556"]
         return self.GET("search", parameters: parameters, success: success, failure: failure)
     }
     

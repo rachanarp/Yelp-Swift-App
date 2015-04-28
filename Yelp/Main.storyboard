@@ -180,10 +180,10 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aVH-qx-XSK" id="kJ5-f5-ONR">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PaX-3i-dUb">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PaX-3i-dUb">
                                                     <rect key="frame" x="249" y="6" width="51" height="31"/>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQP-rG-R5p">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQP-rG-R5p">
                                                     <rect key="frame" x="19" y="11" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -191,6 +191,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="PaX-3i-dUb" firstAttribute="centerY" secondItem="kJ5-f5-ONR" secondAttribute="centerY" id="CtV-z9-Cd8"/>
                                                 <constraint firstItem="HQP-rG-R5p" firstAttribute="leading" secondItem="kJ5-f5-ONR" secondAttribute="leading" constant="19" id="ItN-vk-7gi"/>
                                                 <constraint firstItem="HQP-rG-R5p" firstAttribute="centerY" secondItem="PaX-3i-dUb" secondAttribute="centerY" id="fwu-z2-k7H"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="PaX-3i-dUb" secondAttribute="trailing" constant="10" id="nTg-7Q-u8b"/>
@@ -202,6 +203,7 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <sections/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

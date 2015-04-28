@@ -83,8 +83,13 @@ class YelpViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String : AnyObject]) {
         
         var categoryList = filters["categories"] as? [String]
+        var sortValue: String! = filters["sort"] as? String
+        var dealValue: String! = filters["deals_filter"] as? String
+        var radiusValue : String! = filters["radius_filter"] as? String
+        
+        println( "sortValue = \(sortValue) , dealValue = \(dealValue), radius_filter = \(radiusValue)")
 
-        client.searchWithTermAndCategories("Restaurants",  sort: nil, categories: categoryList, deals: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        client.searchWithTermAndCategories("Restaurants",  sort: sortValue , categories: categoryList, deals: dealValue, radius: radiusValue,  success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             println(response)
             let businessDictionaries : NSArray = response["businesses"] as! NSArray
             let business : Business = Business()
